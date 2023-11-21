@@ -1,0 +1,41 @@
+.header {
+  background-color: $item-bcg-color;
+  padding: 16px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1070px) {
+      grid-template-columns: max-content max-content repeat(1, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+  }
+
+  &__user-panel {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 6px;
+    justify-content: end;
+
+    @media (max-width: 800px) {
+      grid-column: 1/3;
+
+      grid-template-columns: 1fr 1fr 1fr;
+
+      button {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__search {
+    width: max-content;
+
+  }
+}
