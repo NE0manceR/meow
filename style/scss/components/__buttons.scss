@@ -1,0 +1,45 @@
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+  }
+}
+
+.btn.main-btn {
+  color: $item-bcg-color;
+  background-color: $main-btn-color;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(239, 242, 247, 0.25);
+  }
+}
+.btn.alert-btn {
+  color: $item-bcg-color;
+  background-color: $alert-color;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(197, 22, 22, 0.25);
+  }
+}
+
+.btn.main-green {
+  color: $item-bcg-color;
+  background-color: $green-btn-color;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(31, 204, 31, 0.575);
+  }
+}
+
+.btn.main-yellow {
+  color: $item-bcg-color;
+  background-color: $info-color;
+  
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(204, 201, 31, 0.575);
+  }
+}
