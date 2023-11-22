@@ -1,7 +1,7 @@
 <script>
   let all_cats = {};
   $.ajax({
-    url: "http://meow.localhost/views/products.php",
+    url: window.location.origin + "/views/products.php",
     method: "POST",
     data: {
       groups: 'all_groups'
