@@ -64,7 +64,7 @@ class Product_Model
 
       $info = [
         'status' => 'success',
-        "text" => 'Немає у тебе сердця',
+        "text" => 'Котана додано',
       ];
 
       echo json_encode($info);
@@ -116,7 +116,7 @@ class Product_Model
 
           return [
               'status' => 'success',
-              "text" => 'Кота видалено',
+              "text" => 'Немає у тебе сердця',
           ];
       }catch (\PDOException $e) {
 
