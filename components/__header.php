@@ -3,10 +3,10 @@
     <a class="logo" href="/">Meow</a>
     <label class="header__search">
       <input type="text">
-      <button class="btn main-btn">Пошук</button>
+      <button type="button" class="btn main-btn">Пошук</button>
     </label>
     <div class="header__user-panel">
-      <a href="/admin" class="btn main-btn">Адмін панель</a>
+      <a href="/admin" class="btn main-btn admin-btn <?= $_SESSION['user_id'] == -1 ? 'hide-element' : '' ?>">Адмін панель</a>
       <button class="btn main-yellow header-regestration-btn <?= $_SESSION['user_id'] != -1 ? 'hide-element' : '' ?>">Реєстрація</button>
 
       <button class="btn main-green toggle-login-modal header-login-btn <?= $_SESSION['user_id'] != -1 ? 'hide-element' : '' ?>">Логінація</button>

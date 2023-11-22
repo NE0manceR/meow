@@ -64,7 +64,7 @@ class Product_Model
 
       $info = [
         'status' => 'success',
-        "text" => 'Кота додано',
+        "text" => 'Немає у тебе сердця',
       ];
 
       echo json_encode($info);

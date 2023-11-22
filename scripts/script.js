@@ -108,13 +108,10 @@ function add_cat() {
 
   $('.admin__add-cat-from input, .admin__add-cat-from textarea, .admin__add-cat-from select').each(function () {
     let name = $(this).attr('name');
-    console.log($(this).is('input[type="file"]'));
     if ($(this).is('input[type="file"]')) {
       // Перевірка, чи існує файл перед додаванням до FormData
       console.log($(this)[0].files.length > 0, 'qw');
       if ($(this)[0].files.length > 0) {
-        console.log(name);
-        console.log($(this)[0].files[0]);
         form_data.append(name, $(this)[0].files[0]);
       }
     } else {
@@ -122,13 +119,14 @@ function add_cat() {
       form_data.append(name, value);
     }
   });
+  for (const pair of form_data.entries()) {
+    console.log(pair[0], pair[1]);
+  }
   if (
     form_data.get('name').length > 2 &&
-    (form_data.has('img_src') && form_data.get('img_src').length > 3 || form_data.has('file')) && form_data.has('group_id')) {
+    (form_data.has('img_src') && form_data.get('img_src').length > 3 || form_data.has('file')) && form_data.has('group_id') && form_data.get('group_id') !== null) {
 
-    // for (const pair of form_data.entries()) {
-    //   console.log(pair[0], pair[1]);
-    // }
+
     $.ajax({
       url: window.location.origin + "/views/products.php",
       method: "POST",
@@ -137,15 +135,20 @@ function add_cat() {
       processData: false,
       contentType: false,
       success: function (response) {
-        alert(response.text);
+        if (response.status == 'error') {
+          alert('Таки котан вже є');
+        } else {
+          alert(response.text);
+        }
       },
       error: function (xhr, status, error) {
         console.log("Помилка запиту: " + status);
-        alert(xhr.responseText);
+        alert('Такий котан вже є');
       }
     });
+  } else {
+    alert(' Я сильно не валідував але щось напевно пусте')
   }
-
 
 }
 
@@ -217,6 +220,8 @@ function login_func(user_status) {
               $('.header-login-btn').hide();
               $('.header-regestration-btn').hide();
               $('.logout-btn').fadeIn();
+              console.log($('.admin-btn'));
+              $('.admin-btn').fadeIn();
               $('.logination-modal').toggle();
               $('.bcg').fadeToggle();
               get_products(response.id);
@@ -255,6 +260,7 @@ function logout(id) {
     },
     success: function (response) {
       $('.logout-btn').hide();
+      $('.admin-btn').hide();
       $('.header-login-btn, .header-regestration-btn').fadeIn();
       get_products(-1);
     },
@@ -300,6 +306,7 @@ function registration(stat) {
               $('.header-login-btn').hide();
               $('.header-regestration-btn').hide();
               $('.logout-btn').fadeIn();
+              $('.admin-btn').fadeIn();
               get_products(1);
             }, 1200)
           }
@@ -313,6 +320,16 @@ function registration(stat) {
     } else {
       $('.registration-form input').css('border', '1px solid red');
     }
+  }
+}
+
+$('.header__search input').keypress(search_func)
+
+$('.header__search button').on('click', search_func);
+
+function search_func() {
+  if (event.which === 13 || event.type == 'click') {
+    alert("Поки що не мяу");
   }
 }
 
