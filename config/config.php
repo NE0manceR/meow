@@ -1,8 +1,8 @@
 <?php
 
 $db_config = [
-  "server_name" => "localhost",
-  "db_name" => "my_website",
-  "user_name" => "root",
-  "password" => ""
+  "server_name" => "catsite.mysql.tools",
+  "db_name" => "catsite_db",
+  "user_name" => "catsite_db",
+  "password" => "AcM3KqNj"
 ];
