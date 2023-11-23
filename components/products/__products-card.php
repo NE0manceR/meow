@@ -12,7 +12,9 @@
       response.forEach(element => {
         $('.product-container').append(`
           <div class="card">
-            <img src="${window.location.href + element.img_src}" alt="${element.name}">
+            <div class="img">
+              <img src="${window.location.href + element.img_src}" alt="${element.name}">
+            </div>
             <div class="card__description">
               <h3>${element.name}</h3>
               <span>${element.description}</span>

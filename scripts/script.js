@@ -40,14 +40,16 @@ function get_products(id) {
       response.forEach(element => {
         let src = element.img_src.includes('http') ? element.img_src : window.location.href + element.img_src;
         $('.product-container').append(`
-            <div class="card">
-              <img src="${src}" alt="${element.name}">
-              <div class="card__description">
-                <h3>${element.name}</h3>
-                <span>${element.description}</span>
-              </div>
-            </div>
-          `)
+        <div class="card">
+          <div class="img">
+            <img src="${window.location.href + element.img_src}" alt="${element.name}">
+          </div>
+          <div class="card__description">
+            <h3>${element.name}</h3>
+            <span>${element.description}</span>
+          </div>
+        </div>
+      `)
       });
     },
     error: function (xhr, status, error) {
@@ -228,14 +230,16 @@ function login_func(user_status) {
               $('.product-container').html('');
               response.all_cats.forEach(element => {
                 $('.product-container').append(`
-                  <div class="card">
-                    <img src="${element.img_src}" alt="${element.name}">
-                    <div class="card__description">
-                      <h3>${element.name}</h3>
-                      <span>${element.description}</span>
-                    </div>
+                <div class="card">
+                  <div class="img">
+                    <img src="${window.location.href + element.img_src}" alt="${element.name}">
                   </div>
-                `)
+                  <div class="card__description">
+                    <h3>${element.name}</h3>
+                    <span>${element.description}</span>
+                  </div>
+                </div>
+              `)
               });
             }, 1300)
 
@@ -332,5 +336,25 @@ function search_func() {
     alert("Поки що не мяу");
   }
 }
+
+$('.product-container').on('click', function (event) {
+  if (event.target.nodeName === 'IMG' && event.target.classList.contains('active')) {
+    event.target.classList.remove('active');
+    return false;
+  }
+  if (event.target.nodeName === 'IMG') {
+    document.querySelectorAll('.img img').forEach((element) => {
+      element.classList.remove('active')
+    })
+
+    if (event.target.classList.contains('active')) {
+      event.target.classList.remove('active');
+
+    } else {
+      event.target.classList.add('active');
+    }
+  }
+
+})
 
 
